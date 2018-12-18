@@ -24,7 +24,7 @@ int Array::get_size()
 	return size;
 }
 
-void Array::creature(int *&elements, const int N)
+void Array::creature(int *&elements, const int N) // РІС‹РґРµР»РµРЅРёРµ РїР°РјСЏС‚Рё РїРѕРґ РјР°СЃСЃРёРІ
 {
 	if (N > 0)
 	{
@@ -35,104 +35,104 @@ void Array::creature(int *&elements, const int N)
 		cout << "Error in size of array ";
 }
 
-void Array::show(int *elements)  
+void Array::show(int *elements)   // РІС‹РІРѕРґ РјР°СЃСЃРёРІР° РЅР° СЌРєСЂР°РЅ 
 {
 	for (int i = 0; i < size; i++)
 		cout << elements[i] << "  ";
 }
 
-void Array::fill_rand(int *elements)
+void Array::fill_rand(int *elements) // Р·Р°РїРѕР»РЅРµРЅРёРµ СЂР°РЅРґРѕРјРЅС‹РјРё С‡РёСЃР»Р°РјРё 
 {
 	for (int i = 0; i < size; i++)
 		elements[i] = rand() % size + 1;
 }
 
 
-int Array::BinarySearch(int *elemenys, int size, int desired_elem)
+int Array::BinarySearch(int *elemenys, int size, int desired_elem) // РїРѕРёСЃРє СЌР»РµРјРµРЅС‚Р° РІ РјР°СЃСЃРёРІРµ. Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРЅРґРµРєСЃ РЅР°Р№Р¶РµРЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° 
 {
-	if ((desired_elem >= elemenys[0]) && (desired_elem <= elemenys[size - 1]))
+	if ((desired_elem >= elemenys[0]) && (desired_elem <= elemenys[size - 1])) // РїСЂРѕРІРµСЂРєР° РЅРµ РІС‹С…РѕРґРёС‚ Р»Рё Р·РЅР°С‡РµРЅРёРµ РёСЃРєРѕРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р° Р·Р° РїСЂРµРґРµР»С‹ РјР°СЃСЃРёРІР°
 	{
 		int first = 0;
 		int last = size;
-		while (first < last)
+		while (first < last) 
 		{
 			const int middle = first + (last - first) / 2;
 
 			if (desired_elem <= elemenys[middle])
-				last = middle;
+				last = middle; // РµСЃР»Рё РёСЃРєРѕРјС‹Р№ СЌР»РµРјРµРЅС‚ РјРµРЅСЊС€Рµ "СЃРµСЂРµРґРёРЅС‹", СЃСѓР¶Р°РµРј РїРѕРёСЃРєРё. РЎРµСЂРµРґРёРЅР° С‚РµРїРµСЂСЊ РєРѕРЅРµС†.
 			else
-				first = middle + 1;
+				first = middle + 1; //РЎСѓР¶Р°РµРј РїРѕРёСЃРєРё. РС‰РёРј РѕС‚ СЃРµСЂРµРґРёРЅС‹ РґРѕ РєРѕРЅС†Р° РјР°СЃСЃРёРІР°.
 		}
 
 		if (elemenys[last] == desired_elem)
 			return last;
 	}
-	return -1;
+	return -1; //РµСЃР»Рё СЌР»РµРјРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ 
 }
 
 void Array::quickSort(int *elements)
 {
-	int pivot; // элемент с которым сравнивается правая и левая границы 
+	int pivot;// СЌР»РµРјРµРЅС‚ СЃ РєРѕС‚РѕСЂС‹Рј СЃСЂР°РІРЅРёРІР°РµС‚СЃСЏ РїСЂР°РІР°СЏ Рё Р»РµРІР°СЏ РіСЂР°РЅРёС†С‹ 
 	int left = 0;
 	int right = size - 1;
-	int l_hold = left; //левая граница
-	int r_hold = right; // правая граница
+	int l_hold = left; //Р»РµРІР°СЏ РіСЂР°РЅРёС†Р°
+	int r_hold = right; //РїСЂР°РІР°СЏ РіСЂР°РЅРёС†Р°
 	pivot = elements[left];
-	while (left < right) // пока границы не сомкнутся
+	while (left < right) // РїРѕРєР° РіСЂР°РЅРёС†С‹ РЅРµ СЃРѕРјРєРЅСѓС‚СЃСЏ
 	{
 		while ((elements[right] >= pivot) && (left < right))
-			right--; // сдвигаем правую границу пока элемент [right] больше [pivot]
-		if (left != right) // если границы не сомкнулись
+			right--; // СЃРґРІРёРіР°РµРј РїСЂР°РІСѓСЋ РіСЂР°РЅРёС†Сѓ РїРѕРєР° СЌР»РµРјРµРЅС‚ [right] Р±РѕР»СЊС€Рµ [pivot]
+		if (left != right) // РµСЃР»Рё РіСЂР°РЅРёС†С‹ РЅРµ СЃРѕРјРєРЅСѓР»РёСЃСЊ
 		{
-			elements[left] = elements[right]; // перемещаем элемент [right] на место разрешающего
-			left++; // сдвигаем левую границу вправо 
+			elements[left] = elements[right]; // РїРµСЂРµРјРµС‰Р°РµРј СЌР»РµРјРµРЅС‚ [right] РЅР° РјРµСЃС‚Рѕ СЂР°Р·СЂРµС€Р°СЋС‰РµРіРѕ
+			left++; // СЃРґРІРёРіР°РµРј Р»РµРІСѓСЋ РіСЂР°РЅРёС†Сѓ РІРїСЂР°РІРѕ 
 		}
 		while ((elements[left] <= pivot) && (left < right))
-			left++; // сдвигаем левую границу пока элемент [left] меньше [pivot]
-		if (left != right) // если границы не сомкнулись
+			left++; // СЃРґРІРёРіР°РµРј Р»РµРІСѓСЋ РіСЂР°РЅРёС†Сѓ РїРѕРєР° СЌР»РµРјРµРЅС‚ [left] РјРµРЅСЊС€Рµ [pivot]
+		if (left != right) // РµСЃР»Рё РіСЂР°РЅРёС†С‹ РЅРµ СЃРѕРјРєРЅСѓР»РёСЃСЊ
 		{
-			elements[right] = elements[left]; // перемещаем элемент [left] на место [right]
-			right--; // сдвигаем правую границу вправо 
+			elements[right] = elements[left];  // РїРµСЂРµРјРµС‰Р°РµРј СЌР»РµРјРµРЅС‚ [left] РЅР° РјРµСЃС‚Рѕ [right]
+			right--; // СЃРґРІРёРіР°РµРј РїСЂР°РІСѓСЋ РіСЂР°РЅРёС†Сѓ РІРїСЂР°РІРѕ 
 		}
 	}
-	elements[left] = pivot; // ставим разрешающий элемент на место
+	elements[left] = pivot; // СЃС‚Р°РІРёРј СЂР°Р·СЂРµС€Р°СЋС‰РёР№ СЌР»РµРјРµРЅС‚ РЅР° РјРµСЃС‚Рѕ
 	pivot = left;
 	left = l_hold;
 	right = r_hold;
-	if (left < pivot) // Рекурсивно вызываем сортировку для левой и правой части массива
+	if (left < pivot) // Р РµРєСѓСЂСЃРёРІРЅРѕ РІС‹Р·С‹РІР°РµРј СЃРѕСЂС‚РёСЂРѕРІРєСѓ РґР»СЏ Р»РµРІРѕР№ Рё РїСЂР°РІРѕР№ С‡Р°СЃС‚Рё РјР°СЃСЃРёРІР°
 		quickSort_inside(elements, left, pivot - 1);
 	if (right > pivot)
 		quickSort_inside(elements, pivot + 1, right);
 }
 
-void Array::quickSort_inside(int *elements, int left, int right)
+void Array::quickSort_inside(int *elements, int left, int right) // РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ quickSort. РџСЂРёРЅС†РёРї СЂР°Р±РѕС‚С‹ Р°РЅР°Р»РѕРіРёС‡РЅС‹Р№
 {
 	int pivot; 
-	int l_hold = left; //левая граница
-	int r_hold = right; // правая граница
+	int l_hold = left; 
+	int r_hold = right; 
 	pivot = elements[left];
-	while (left < right) // пока границы не сомкнутся
+	while (left < right) 
 	{
 		while ((elements[right] >= pivot) && (left < right))
-			right--; // сдвигаем правую границу пока элемент [right] больше [pivot]
-		if (left != right) // если границы не сомкнулись
+			right--;  
+		if (left != right) 
 		{
-			elements[left] = elements[right]; // перемещаем элемент [right] на место разрешающего
-			left++; // сдвигаем левую границу вправо 
+			elements[left] = elements[right];
+			left++; 
 		}
 		while ((elements[left] <= pivot) && (left < right))
-			left++; // сдвигаем левую границу пока элемент [left] меньше [pivot]
-		if (left != right) // если границы не сомкнулись
+			left++; 
+		if (left != right) 
 		{
-			elements[right] = elements[left]; // перемещаем элемент [left] на место [right]
-			right--; // сдвигаем правую границу вправо 
+			elements[right] = elements[left];
+			right--; 
 		}
 	}
-	elements[left] = pivot; // ставим разрешающий элемент на место
+	elements[left] = pivot; 
 	pivot = left;
 	left = l_hold;
 	right = r_hold;
-	if (left < pivot) // Рекурсивно вызываем сортировку для левой и правой части массива
+	if (left < pivot) 
 		quickSort_inside(elements, left, pivot - 1);
 	if (right > pivot)
 		quickSort_inside(elements, pivot + 1, right);
@@ -144,7 +144,7 @@ void Array::bubble_sort(int* elements)
 	if (size == 0)
 		cout << "Array is empty";
 	else {
-		int temp; // временная переменная для обмена элементов местами 
+		int temp;// РІСЂРµРјРµРЅРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РѕР±РјРµРЅР° СЌР»РµРјРµРЅС‚РѕРІ РјРµСЃС‚Р°РјРё 
 		for (size_t i = 0; i < size - 1; i++) {
 			for (size_t j = 0; j < size - i - 1; j++) {
 				if (elements[j] > elements[j + 1])
@@ -153,7 +153,7 @@ void Array::bubble_sort(int* elements)
 					/*temp = elements[j];
 					elements[j] = elements[j + 1];
 					elements[j + 1] = temp;*/
-					swap(elements[j], elements[j + 1]);
+					swap(elements[j], elements[j + 1]); // swap С„СѓРЅРєС†РёСЏ РґР»СЏ РѕР±Р»РµРЅС‹ РґРІСѓС… СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° РјРµСЃС‚Р°РјРё 
 				}
 			}
 
@@ -162,21 +162,21 @@ void Array::bubble_sort(int* elements)
 }
 
 
-void Array::Bogo_sort(int *elenemts) // глупая сортировка
+void Array::Bogo_sort(int *elenemts) // Р“Р»СѓРїР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°
 {
 	bool flag = true;
 	while (flag)
 	{
 		flag = false;
-		for (int i = 0; i < size - 1; i++)
+		for (size_t i = 0; i < size - 1; i++)
 		{
-			if (elenemts[i] > elenemts[i + 1]) flag = true;  
+			if (elenemts[i] > elenemts[i + 1]) flag = true; // РµСЃР»Рё С‚РµРєСѓС‰РёР№ СЌР»РµРјРµРЅС‚ Р±РѕР»СЊС€Рµ СЃР»РµРґСѓСЋС‰РµРіРѕ, С‚Рѕ РїСЂРёРґРµС‚СЃСЏ РїСЂРѕРґРѕР»Р¶Р°С‚СЊ СЃРѕСЂС‚РёСЂРѕРІРєСѓ 
 		}
-		if (flag)
+		if (flag) 
 		{
 			for (int i = 0; i < size - 1; i++)
 			{
-				int rand_index = rand() % size;
+				int rand_index = rand() % size; // РѕР±РјРµРЅ РґРІСѓС… СЂР°РЅРґРѕРјРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ РјРµСЃС‚Р°РјРё
 				int help_elem = elenemts[rand_index];
 				elenemts[rand_index] = elenemts[i];
 				elenemts[i] = help_elem;
@@ -186,24 +186,24 @@ void Array::Bogo_sort(int *elenemts) // глупая сортировка
 	}
 }
 
-void Array::heapify(int *elements, int root, int bottom_row)
+void Array::heapify(int *elements, int root, int bottom_row) // РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РїРёСЂР°РјРёРґР°Р»СЊРЅРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё
 {
 	int largest = bottom_row;
-	int l = 2 * bottom_row + 1;
-	int r = 2 * bottom_row + 2;
-	if ((l < root) && (elements[l] > elements[largest]))
+	int l = 2 * bottom_row + 1;  
+	int r = 2 * bottom_row + 2; 
+	if ((l < root) && (elements[l] > elements[largest])) 
 		largest = l;
 	if ((r < root) && (elements[r] > elements[largest]))
 		largest = r;
 	if (largest != bottom_row)
 	{
-		swap(elements[bottom_row], elements[largest]);
-		heapify(elements, root, largest);
+		swap(elements[bottom_row], elements[largest]); 
+		heapify(elements, root, largest); 
 	}
 }
 
 
-void Array::heapSort(int *elements)
+void Array::heapSort(int *elements) //РїРёСЂР°РјРёРґР°Р»СЊРЅР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°
 {
 	for (int i = size / 2 - 1; i >= 0; i--)
 		heapify(elements, size, i);
@@ -214,14 +214,12 @@ void Array::heapSort(int *elements)
 	}
 }
 
-void Array::CharCreature(char *&elements, const int N) //Вне класса описываем метод выделения памяти под массив
-{
-
+void Array::CharCreature(char *&elements, const int N) //РІС‹РґРµР»РµРЅРёРµ РїР°РјСЏС‚Рё РїРѕРґ РјР°СЃСЃРёРІ СЃРёРјРІРѕР»РѕРІ
 	elements = new char[N];
 	size = N;
 }
 
-void Array::CharFill(char *elements)    // определяем функцию заполнения рандомного массива
+void Array::CharFill(char *elements)  // Р·Р°РїРѕР»РЅРµРЅРёРµ РјР°СЃСЃРёРІР° СЃРёРјРІРѕР»РѕРІ СЃ РєР»Р°РІРёР°С‚СѓСЂС‹ 
 {
 	char letter;
 	cout << "Enter an array of char:\n";
@@ -233,7 +231,7 @@ void Array::CharFill(char *elements)    // определяем функцию заполнения рандомн
 	}
 }
 
-void Array::CharShow(char *elements)
+void Array::CharShow(char *elements) // РІС‹РІРѕРґ РјР°СЃСЃРёРІР° СЃРёРјРІРѕР»РѕРІ
 {
 	for (int i = 0; i < size; i++) 
 		cout << elements[i] << "  ";
@@ -242,7 +240,7 @@ void Array::CharShow(char *elements)
 
 void Array::CountingSort(char* elements)
 {
-	size_t* SortingArray = new size_t[255];// диапазон значений char от -127 до 127
+	size_t* SortingArray = new size_t[255];// Р”РёР°РїР°Р·РѕРЅ char-РѕРІ -127 РґРѕ 127
 	for (size_t i = 0; i < 255; i++)
 		SortingArray[i] = 0;
 	for (size_t i = 0; i < size; i++)
@@ -264,21 +262,21 @@ void Array::CountingSort(char* elements)
 
 }
 
-int correct(int *elements, int size)
+int correct(int *elements, int size) // С„СѓРЅРєС†РёСЏ РґР»СЏ С‚РµСЃС‚РѕРІ
 {
 	if (size <= 0)
 		return 0;
 	else
 	{
 		while (--size > 0)
-			if (elements[size - 1] > elements[size])
+			if (elements[size - 1] > elements[size]) // РїСЂРѕРІРµСЂРєР°: РїСЂРµРґС‹РґСѓС‰РёР№ СЌР»РµРјРµРЅС‚ РјРµРЅСЊС€Рµ С‚РµРєСѓС‰РµРіРѕ
 				return 0;
 		return 1;
 	}
 }
 
 
-bool is_equal(int*a1, int size, int*a2)
+bool is_equal(int*a1, int size, int*a2) // С„СѓРЅРєС†РёСЏ РґР»СЏ С‚РµСЃС‚РѕРІ
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -288,7 +286,7 @@ bool is_equal(int*a1, int size, int*a2)
 	return true;
 }
 
-bool is_equal_char(char*a1, int size, char*a2)
+bool is_equal_char(char*a1, int size, char*a2) // С„СѓРЅРєС†РёСЏ РґР»СЏ С‚РµСЃС‚РѕРІ
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -297,4 +295,4 @@ bool is_equal_char(char*a1, int size, char*a2)
 	}
 	return true;
 }
-//переделать двоичный поиск в int, усли нет -1
+
