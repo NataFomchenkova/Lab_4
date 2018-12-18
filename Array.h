@@ -12,25 +12,24 @@ class Array
 {
 	int *elements;
 	size_t size;
-	void heapify(int *elements, int root, int bottom_row); // рекурсивная функция для 
-	void quickSort_inside(int *elements, int left, int right); // рекурсивная функция для быстрой сортировки
-
+	void heapify(int *elements, int root, int bottom_row); //РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РїРёСЂР°РјРёРґР°Р»СЊРЅРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё
+	void quickSort_inside(int *elements, int left, int right); //РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ Р±С‹СЃС‚СЂРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё 
 
 public:
 	Array();
 	~Array();
 	int get_size();
-	void creature(int *&elements, const int size);  //выделение памяти под массив 
-	void show(int *elements); // вывод массива
-	void fill_rand(int *elements); // рандомное заполнение 
+	void creature(int *&elements, const int size);  // РІС‹РґРµР»РµРЅРёРµ РїР°РјСЏС‚Рё РїРѕРґ РјР°СЃСЃРёРІ
+	void show(int *elements); // РІС‹РІРѕРґ СЌР»РµРјРµРЅС‚РѕРІ РЅР° СЌРєСЂР°РЅ 
+	void fill_rand(int *elements); // СЂР°РЅРґРѕРјРЅРѕРµ Р·Р°РїРѕР»РЅРµРЅРёРµ 
 	void bubble_sort(int* elements); 	
 	int BinarySearch(int *elemenys, int size, int desired_elem);
 	void quickSort(int *elements);
 	void Bogo_sort(int *elenemts);
 	void heapSort(int *elements);
-	void CharCreature(char *&elements, const int size); // выделение памяти под charовский массив 
-	void CharFill(char *elements);// заполнение массива символов. Ввод с клавиатуры
-	void CharShow(char *elements); // вывод массива символов на экран 
+	void CharCreature(char *&elements, const int size); // РІС‹РґРµР»РµРЅРёРµ РїР°РјСЏС‚Рё РїРѕРґ РјР°СЃСЃРёРІ СЃРёРјРІРѕР»РѕРІ
+	void CharFill(char *elements);// Р·Р°РїРѕРјРЅРµРЅРёРµ РјР°СЃСЃРёРІР° СЃ РєР»Р°РІРёР°С‚СѓСЂС‹
+	void CharShow(char *elements); // РІС‹РІРѕРґ РјР°СЃСЃРёРІР° РЅР° СЌРєСЂР°РЅ 
 	void CountingSort(char* elements); 
 
 
